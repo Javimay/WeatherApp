@@ -1,8 +1,8 @@
 package co.javimay.weatherapp.data.db
 
 import androidx.room.*
-import co.javimay.weatherapp.data.model.City
-import co.javimay.weatherapp.utils.tableNames
+import co.javimay.weatherapp.data.db.model.City
+import co.javimay.weatherapp.utils.CITY
 
 @Dao
 interface CityDao {
@@ -10,10 +10,13 @@ interface CityDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun saveCity(city: City)
 
-    @Query("DELETE FROM ${tableNames.CITY}")
+    @Query("DELETE FROM ${CITY}")
     suspend fun deleteAllCities()
 
-    @Query("SELECT * FROM ${tableNames.CITY}")
+    @Delete
+    suspend fun deleteCity(city: City)
+
+    @Query("SELECT * FROM ${CITY}")
     suspend fun getCity(): List<City>
 
     @Update

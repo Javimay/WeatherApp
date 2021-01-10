@@ -1,17 +1,19 @@
 package co.javimay.weatherapp.data.api
 
-import co.javimay.weatherapp.data.model.Weather
-import co.javimay.weatherapp.utils.serializedNames
-import co.javimay.weatherapp.utils.servicesEndPoints
+import co.javimay.weatherapp.data.api.model.Weather
+import co.javimay.weatherapp.utils.API_KEY
+import co.javimay.weatherapp.utils.GET_WEATHER
+import co.javimay.weatherapp.utils.LAT
+import co.javimay.weatherapp.utils.LON
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface WeatherService {
-    @GET(servicesEndPoints.GET_WEATHER)
+    @GET(GET_WEATHER)
     suspend fun getWeather(
-        @Query(serializedNames.API_KEY) apiKey: String,
-        @Query(serializedNames.LAT) lat: Double,
-        @Query(serializedNames.LON) lon: Double
+        @Query(API_KEY) apiKey: String,
+        @Query(LAT) lat: Double,
+        @Query(LON) lon: Double
     ): Response<Weather>
 }

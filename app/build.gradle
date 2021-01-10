@@ -4,6 +4,13 @@ plugins {
     id 'kotlin-kapt'
 }
 
+def WEATHER_API_KEY = '"' + weatherApiKey + '"' ?: '"No weather api key found"';
+def GOOGLE_MAPS_KEY = '"' + googleMapsKey + '"' ?: '"No google maps key found"';
+
+android.buildTypes.each { type ->
+    type.buildConfigField 'String', 'API_KEY', WEATHER_API_KEY
+}
+
 android {
     compileSdkVersion 29
     buildToolsVersion "30.0.3"
@@ -14,12 +21,18 @@ android {
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
-
+        manifestPlaceholders = [googleKey:GOOGLE_MAPS_KEY]
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
         release {
+            buildConfigField "String", "API_BASE_URL", "\"http://api.openweathermap.org/data/2.5/\""
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            buildConfigField "String", "API_BASE_URL", "\"http://api.openweathermap.org/data/2.5/\""
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }

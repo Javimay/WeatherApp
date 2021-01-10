@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">WeatherApp</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="google_maps_key">AIzaSyCPju7Ntf6-t-0wBr2tN4_BXs0nOaPoIgk</string>
+    <string name="map_marker_add_city">¿Do you want to add %1$s to your favorites?</string>
+    <string name="map_marker_add_city_confirmation">¡%1$s has been added to favorites!</string>
+    <string name="map_marker_error_location">The current location could not be saved.</string>
 </resources>

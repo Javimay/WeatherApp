@@ -1,27 +1,28 @@
 package co.javimay.weatherapp.utils
 
-object tableNames {
-    const val CITY = "city"
-    const val WETHER = "weather"
-}
+import com.google.android.gms.maps.model.LatLng
 
-object serializedNames {
-    const val API_KEY = "appid"
-    const val LAT = "lat"
-    const val LON = "lon"
+//TablesNames
+const val CITY = "city"
+const val WEATHER = "weather"
 
-}
+//SerializedNames
+const val API_KEY = "appid"
+const val LAT = "lat"
+const val LON = "lon"
 
-object servicesEndPoints{
-    const val GET_WEATHER = "weather"
-}
+//ServiceEndPoints
+const val GET_WEATHER = "weather"
 
-object appConstants{
-    const val DATABASE_NAME = "tmdbclient"
-}
+//App constants
+const val DATABASE_NAME = "weatherdb"
+val INITIAL_LOCATION = LatLng(38.7071, -9.13549)
 
-object tabsNames{
-    const val TAB_MAP = "Mapa"
-    const val TAB_HOME = "Home"
-    const val TAB_HELP = "Ayuda"
-}
+//Tabs names
+const val TAB_MAP = "Map"
+const val TAB_HOME = "Home"
+const val TAB_HELP = "Help"
+
+//States
+const val STATE_DELETED = 0
+const val STATE_FAVORITE = 1

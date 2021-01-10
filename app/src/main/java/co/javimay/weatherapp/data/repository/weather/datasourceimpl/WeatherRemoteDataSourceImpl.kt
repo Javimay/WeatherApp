@@ -1,7 +1,7 @@
 package co.javimay.weatherapp.data.repository.weather.datasourceimpl
 
 import co.javimay.weatherapp.data.api.WeatherService
-import co.javimay.weatherapp.data.model.Weather
+import co.javimay.weatherapp.data.api.model.Weather
 import co.javimay.weatherapp.data.repository.weather.datasource.WeatherRemoteDataSource
 import retrofit2.Response
 
