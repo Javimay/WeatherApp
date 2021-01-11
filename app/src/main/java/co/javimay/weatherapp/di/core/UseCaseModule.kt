@@ -2,6 +2,7 @@ package co.javimay.weatherapp.di.core
 
 import co.javimay.weatherapp.domain.repository.CityRepository
 import co.javimay.weatherapp.domain.repository.WeatherRepository
+import co.javimay.weatherapp.domain.usecase.city.DeleteCityUseCase
 import co.javimay.weatherapp.domain.usecase.city.GetCityUseCase
 import co.javimay.weatherapp.domain.usecase.city.SaveCityUseCase
 import co.javimay.weatherapp.domain.usecase.weather.GetWeatherUseCase
@@ -20,6 +21,11 @@ class UseCaseModule {
     @Provides
     fun provideSaveCityUseCase(cityRepository: CityRepository):SaveCityUseCase
             = SaveCityUseCase(cityRepository)
+
+    @Singleton
+    @Provides
+    fun provideDeleteCityUseCase(cityRepository: CityRepository):DeleteCityUseCase
+            = DeleteCityUseCase(cityRepository)
 
     @Singleton
     @Provides

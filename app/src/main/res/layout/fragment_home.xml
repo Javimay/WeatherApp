@@ -8,6 +8,8 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_cities"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        tools:itemCount="3"
+        tools:listitem="@layout/recicler_view_city_item" />
 
 </FrameLayout>

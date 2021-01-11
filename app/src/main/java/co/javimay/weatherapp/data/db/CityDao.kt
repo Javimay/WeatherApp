@@ -10,13 +10,13 @@ interface CityDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun saveCity(city: City)
 
-    @Query("DELETE FROM ${CITY}")
+    @Query("DELETE FROM $CITY")
     suspend fun deleteAllCities()
 
     @Delete
     suspend fun deleteCity(city: City)
 
-    @Query("SELECT * FROM ${CITY}")
+    @Query("SELECT * FROM $CITY")
     suspend fun getCity(): List<City>
 
     @Update

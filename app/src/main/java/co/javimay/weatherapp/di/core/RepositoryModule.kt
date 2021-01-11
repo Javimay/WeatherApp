@@ -15,8 +15,7 @@ class RepositoryModule {
     @Singleton
     @Provides
     fun provideCityRepository(
-        cityLocalDataSource: CityLocalDataSource,
-        weatherRepository: WeatherRepository
+        cityLocalDataSource: CityLocalDataSource
     ): CityRepository = CityRepositoryImpl(cityLocalDataSource)
 
     @Singleton

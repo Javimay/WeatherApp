@@ -28,7 +28,7 @@ import javax.inject.Inject
 class MapFragment : Fragment(), OnMapReadyCallback {
 
     companion object{
-        val TAG = this::class.java.simpleName
+        val TAG = MapFragment::class.java.simpleName
     }
 
     @Inject
@@ -57,7 +57,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
             markerOptions.title(city?.name)
             markerOptions.snippet(String.format(getString(R.string.map_marker_add_city), city?.name))
             googleMap.clear()
-            googleMap.setOnInfoWindowClickListener {
+            googleMap.setOnInfoWindowClickListener { marker ->
                 if (city!=null){
                 val responsseLiveData: LiveData<Boolean> = mapViewModel.saveCities(city)
                 responsseLiveData.observe(this, {
@@ -65,8 +65,9 @@ class MapFragment : Fragment(), OnMapReadyCallback {
                         Toast.LENGTH_LONG)
                         .show()
                     Log.i(TAG, it.toString())
+                    marker.hideInfoWindow()
                 })
-                }else  it.snippet = getString(R.string.map_marker_error_location)
+                }else  marker.snippet = getString(R.string.map_marker_error_location)
             }
             googleMap.addMarker(markerOptions).showInfoWindow()
         }
@@ -85,7 +86,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
                 else "UNKNOW",
                 latitude = addresses[addresses.lastIndex].latitude,
                 longitude = addresses[addresses.lastIndex].longitude,
-                state = STATE_FAVORITE,
+                state = STATE_FAVORITE, id = null
             )
             return city
         } else {

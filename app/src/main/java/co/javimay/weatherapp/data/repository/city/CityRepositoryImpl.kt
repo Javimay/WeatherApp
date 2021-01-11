@@ -20,7 +20,7 @@ class CityRepositoryImpl(
 
     override suspend fun getCities(): List<City>? = getCitiesFromDB()
 
-    override suspend fun deleteCities(city: City) {
+    override suspend fun deleteCities() {
         cityLocalDataSource.clearAll()
     }
 

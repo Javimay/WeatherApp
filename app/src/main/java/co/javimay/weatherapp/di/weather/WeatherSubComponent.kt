@@ -1,12 +1,12 @@
 package co.javimay.weatherapp.di.weather
 
-import co.javimay.weatherapp.presentation.home.ui.HomeFragment
+import co.javimay.weatherapp.presentation.city.ui.CityActivity
 import dagger.Subcomponent
 
 @WeatherScope
 @Subcomponent(modules = [WeatherModule::class])
 interface WeatherSubComponent {
-    fun inject(homeFragment: HomeFragment)
+    fun inject(cityActivity: CityActivity)
 
     @Subcomponent.Factory
     interface Factory{
