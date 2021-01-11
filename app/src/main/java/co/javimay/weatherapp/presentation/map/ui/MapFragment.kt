@@ -80,10 +80,10 @@ class MapFragment : Fragment(), OnMapReadyCallback {
             val city = City(
                 name = if(!addresses[addresses.lastIndex].locality.isNullOrEmpty())
                     addresses[addresses.lastIndex].locality
-                            else "UNKNOW",
+                            else getString(R.string.map_marker_unknow_city),
                 country = if(!addresses[addresses.lastIndex].countryName.isNullOrEmpty())
                     addresses[addresses.lastIndex].countryName
-                else "UNKNOW",
+                else getString(R.string.map_marker_unknow_city),
                 latitude = addresses[addresses.lastIndex].latitude,
                 longitude = addresses[addresses.lastIndex].longitude,
                 state = STATE_FAVORITE, id = null

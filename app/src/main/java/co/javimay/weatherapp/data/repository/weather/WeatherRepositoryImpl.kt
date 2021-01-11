@@ -17,11 +17,10 @@ class WeatherRepositoryImpl(
     }
 
     override suspend fun getWeather(city: City): Weather? {
-        val weather: Weather = getWeatherFromAPI(city.latitude, city.longitude)
-        return weather
+        return getWeatherFromAPI(city.latitude, city.longitude)
     }
 
-    suspend fun getWeatherFromAPI(latitude: Double, longitude: Double): Weather {
+    private suspend fun getWeatherFromAPI(latitude: Double, longitude: Double): Weather {
         lateinit var weatherList: Weather
         try {
             val response : Response<Weather> = weatherRemoteDataSource.getWeather(latitude, longitude)

@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.TextView
+import androidx.core.os.persistableBundleOf
 import androidx.recyclerview.widget.RecyclerView
 import co.javimay.weatherapp.R
 import co.javimay.weatherapp.presentation.city.model.City
@@ -13,10 +14,10 @@ import co.javimay.weatherapp.presentation.city.model.City
 
 class ReciclerViewAdapter(
     private val cityList: MutableList<City>,
-                          context: Context?,
+    context: Context?,
     private val itemClickListener: (position: Int)-> Unit) :
     RecyclerView.Adapter<ReciclerViewAdapter.MyViewHolder>() {
-
+    var onItemClick: ((position:Int) -> Unit)? = null
     private var mInflater: LayoutInflater = LayoutInflater.from(context)
 
     init {
@@ -37,6 +38,10 @@ class ReciclerViewAdapter(
 
     inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
 
+        init {
+
+        }
+
         fun initBindHolder(city: City, position: Int) {
             val tvCityName = itemView.findViewById<TextView>(R.id.tv_city_name)
             tvCityName.text = city.name
@@ -44,6 +49,9 @@ class ReciclerViewAdapter(
             ibDeleteCity.setOnClickListener {
                 cityList.remove(cityList[position])
                 itemClickListener(position)
+            }
+            itemView.setOnClickListener {
+                onItemClick?.invoke(position)
             }
         }
     }

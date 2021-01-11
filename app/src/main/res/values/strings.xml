@@ -4,13 +4,29 @@
     <string name="map_marker_add_city">¿Do you want to add %1$s to your favorites?</string>
     <string name="map_marker_add_city_confirmation">¡%1$s has been added to favorites!</string>
     <string name="map_marker_error_location">The current location could not be saved.</string>
+    <string name="map_marker_unknow_city">Unkow city</string>
+
     <string name="title_activity_city">CityActivity</string>
-    <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
+    <!--    city strings-->
+    <string name="txt_city_forecast">Forecast: %s</string>
+    <string name="txt_city_temperature">Temperature: %s</string>
+    <string name="txt_city_humidity">Humidity: %s</string>
+    <string name="txt_city_rain_chances">Rain chances: %s</string>
+    <string name="txt_city_wind">Wind chances: %s</string>
+<!--Help strings-->
+    <string name="title_activity_help">Help</string>
+    <string name="txt_activity_help_description"><b>Add cities\n</b>
+        \nAdd a city by holding down the map to place a marker. If you want to add the city to favorites,
+        press the message of the marker that is displayed.\n
 
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+        <b>\nDelete cities\n</b>
+
+        \nTo delete a city press the icon "X".\n
+
+        <b>\nSee the weather of a city\n</b>
+
+        \nThe Home screen displays the list of cities saved as favorites. Select a city from the list
+        to know the weather information.</string>
 </resources>

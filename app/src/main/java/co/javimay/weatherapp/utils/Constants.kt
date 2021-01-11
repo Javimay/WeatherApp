@@ -26,3 +26,10 @@ const val TAB_HELP = "Help"
 //States
 const val STATE_DELETED = 0
 const val STATE_FAVORITE = 1
+
+//PutExtra cityvalues
+const val CITY_NAME = "cityName"
+const val CITY_LATITUDE = "cityLatitude"
+const val CITY_LONGITUDE = "cityLongitue"
+const val CITY_COUNTRY = "cityCountry"
+const val CITY_STATE = "cityState"

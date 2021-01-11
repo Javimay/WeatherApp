@@ -1,5 +1,6 @@
 package co.javimay.weatherapp.presentation.home.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,15 +14,13 @@ import co.javimay.weatherapp.R
 import co.javimay.weatherapp.di.Injector
 import co.javimay.weatherapp.presentation.adapter.ReciclerViewAdapter
 import co.javimay.weatherapp.presentation.city.model.City
+import co.javimay.weatherapp.presentation.city.ui.CityActivity
 import co.javimay.weatherapp.presentation.home.viewmodel.HomeViewModel
 import co.javimay.weatherapp.presentation.home.viewmodel.HomeViewModelFactory
+import co.javimay.weatherapp.utils.*
 import javax.inject.Inject
 
 class HomeFragment : Fragment() {
-
-    companion object {
-        val TAG = HomeFragment::class.java.simpleName
-    }
 
     private lateinit var adapter: ReciclerViewAdapter
 
@@ -37,16 +36,20 @@ class HomeFragment : Fragment() {
         super.onCreate(savedInstanceState)
         (activity?.application as Injector).createCitySubComponent().inject(this)
         homeViewModel = ViewModelProvider(this, factory).get(HomeViewModel::class.java)
-        val responsseLiveData: LiveData<List<City>?> = homeViewModel.getCities()
-        responsseLiveData.observe(this, {
+        /*val responseLiveData: LiveData<List<City>?> = homeViewModel.getCities()
+        responseLiveData.observe(this, {
             citiesList = it!!
             initRecicler()
-        })
+        })*/
     }
 
     override fun onResume() {
         super.onResume()
-        adapter.notifyDataSetChanged()
+        val responseLiveData: LiveData<List<City>?> = homeViewModel.getCities()
+        responseLiveData.observe(this, {
+            citiesList = it!!
+            initRecicler()
+        })
     }
 
     override fun onCreateView(
@@ -61,12 +64,27 @@ class HomeFragment : Fragment() {
     private fun initRecicler() {
         viewManager = LinearLayoutManager(context)
         adapter = ReciclerViewAdapter(citiesList.toMutableList(), context) {position ->
-            val responsseLiveData: LiveData<Boolean> = homeViewModel.deleteCity(citiesList[position])
-            responsseLiveData.observe(this, {
+            val responseLiveData: LiveData<Boolean> = homeViewModel.deleteCity(citiesList[position])
+            responseLiveData.observe(this, {
                 adapter.notifyDataSetChanged()
             })
         }
+        adapter.onItemClick = {position ->
+            GoToCityActivity(citiesList[position])
+
+        }
         recyclerCities.adapter = adapter
         recyclerCities.layoutManager = viewManager
+    }
+
+    private fun GoToCityActivity(city: City) {
+        val intent = Intent(context, CityActivity::class.java).apply {
+            putExtra(CITY_NAME, city.name)
+            putExtra(CITY_LATITUDE, city.latitude)
+            putExtra(CITY_LONGITUDE, city.longitude)
+            putExtra(CITY_COUNTRY, city.country)
+            putExtra(CITY_STATE, city.state)
+        }
+        startActivity(intent)
     }
 }
