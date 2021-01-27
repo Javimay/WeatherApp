@@ -1,10 +1,10 @@
 <resources>
     <string name="app_name">WeatherApp</string>
-    <string name="google_maps_key">AIzaSyCPju7Ntf6-t-0wBr2tN4_BXs0nOaPoIgk</string>
+    <string name="google_maps_key">AIzaSyD2RG_PaBi9IQCBqfDYoAgLh9apbNPbB2A</string>
     <string name="map_marker_add_city">¿Do you want to add %1$s to your favorites?</string>
     <string name="map_marker_add_city_confirmation">¡%1$s has been added to favorites!</string>
     <string name="map_marker_error_location">The current location could not be saved.</string>
-    <string name="map_marker_unknow_city">Unkow city</string>
+    <string name="map_marker_unknow_city">Unknown city</string>
 
     <string name="title_activity_city">CityActivity</string>
     <string name="next">Next</string>
